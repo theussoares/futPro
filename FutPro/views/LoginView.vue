@@ -18,6 +18,9 @@ import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { useFirebase } from "~/composable/useFirebase";
 //@ts-ignore
 import { useUserStore } from "@/store/useUserStore";
+import { useVWO } from "~/composable/useVWO";
+
+useVWO();
 
 const router = useRouter();
 const route = useRoute();
@@ -28,8 +31,8 @@ const authUser = auth.currentUser;
 const db = getFirestore();
 
 onBeforeMount(() => {
-  if(route.params?.version == "B") versionStore.setVersion("B");
-  console.log("Versão:", versionStore.getVersion);
+  if(route.query?.version == "B") versionStore.setVersion("B");
+  console.log("Versão:", versionStore.getVersion, route.query?.version);
 })
 
 const handleLogin = async (form: {
