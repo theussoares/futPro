@@ -7,16 +7,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     if (cookie == "B") versionStore.setVersion("B");
     console.log("Versão:", versionStore.getVersion, cookie);
 
-    function getCookie(name: string) {
-        const nameEq = name + "=";
-        const ca = document.cookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i].trim();
-            if (c.indexOf(nameEq) === 0) return c.substring(nameEq.length, c.length);
-        }
-        return "";
-    }
-
+    if(to.path === '/') return;
 
     if (!role) {
         return navigateTo('/');
@@ -39,3 +30,13 @@ export default defineNuxtRouteMiddleware((to, from) => {
         return navigateTo('/');
     }
 });
+
+function getCookie(name: string) {
+    const nameEq = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(nameEq) === 0) return c.substring(nameEq.length, c.length);
+    }
+    return "";
+}
