@@ -20,10 +20,17 @@ import { useFirebase } from "~/composable/useFirebase";
 import { useUserStore } from "@/store/useUserStore";
 
 const router = useRouter();
+const route = useRoute();
 const { auth } = useFirebase();
 const userStore = useUserStore();
+const versionStore = useVersionStore();
 const authUser = auth.currentUser;
 const db = getFirestore();
+
+onBeforeMount(() => {
+  if(route.params?.version == "B") versionStore.setVersion("B");
+  console.log("Versão:", versionStore.getVersion);
+})
 
 const handleLogin = async (form: {
   email: string;
