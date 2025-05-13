@@ -1,0 +1,6 @@
+@import url('https://fonts.gstatic.com/s/roboto/v32/KFOmCnqEu92Fr1Mu4mxKKTU1Kg.woff2');
+@import "tailwindcss";
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
