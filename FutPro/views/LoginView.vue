@@ -26,14 +26,8 @@ const router = useRouter();
 const route = useRoute();
 const { auth } = useFirebase();
 const userStore = useUserStore();
-const versionStore = useVersionStore();
 const authUser = auth.currentUser;
 const db = getFirestore();
-
-onBeforeMount(() => {
-  if(route.query?.version == "B") versionStore.setVersion("B");
-  console.log("Versão:", versionStore.getVersion, route.query?.version);
-})
 
 const handleLogin = async (form: {
   email: string;
