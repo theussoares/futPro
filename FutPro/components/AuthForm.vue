@@ -103,7 +103,7 @@
   <button
     v-if="!isSignUp"
     @click="loginWithGoogle"
-    class="text-[#049B56] border-2 border-[#049B56] px-2 py-3 rounded-md mt-20"
+    class="text-[#000] border-2 border-[#000] px-2 py-3 rounded-md mt-20"
   >
     <div class="flex items-center gap-2">
       <NuxtImg

@@ -1,5 +1,6 @@
 <template>
-  <div class="min-h-dvh flex flex-col justify-center items-center p-6">
+  <div :class="`min-h-dvh flex flex-col justify-center items-center p-6 ${version ? 'bg-black' : ''}`">
+    <p v-if="version" class="text-white font-semibold">Versão B mano, faz login</p>
     <AuthForm
       title="Faça login"
       :isSignUp="false"
@@ -26,6 +27,8 @@ const router = useRouter();
 const route = useRoute();
 const { auth } = useFirebase();
 const userStore = useUserStore();
+const versionStore = useVersionStore();
+const version = computed(() => versionStore.getVersion === "B"); 
 const authUser = auth.currentUser;
 const db = getFirestore();
 
