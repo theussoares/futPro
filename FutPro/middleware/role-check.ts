@@ -1,6 +1,11 @@
 export default defineNuxtRouteMiddleware((to, from) => {
     const userStore = useUserStore();
+    const versionStore = useVersionStore();
     const role = userStore.user?.role;
+
+    if(to.params?.version === 'B') {
+        versionStore.setVersion(to.params.version);
+    }
 
     if (!role) {
         return navigateTo('/');

@@ -1,5 +1,9 @@
 <template>
-  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around items-center h-16">
+  <nav
+    :class="`fixed bottom-0 left-0 right-0 border-t flex justify-around items-center h-16
+${version == 'B' ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'}
+`"
+  >
     <button
       v-for="item in items"
       :key="item.to"
@@ -15,8 +19,10 @@
 
 <script setup lang="ts">
 interface Props {
-    items: { label: string; to: string; icon: any }[]
+  items: { label: string; to: string; icon: any }[];
 }
 
 const props = defineProps<Props>();
+const versionStore = useVersionStore();
+const version = computed(() => versionStore.getVersion);
 </script>

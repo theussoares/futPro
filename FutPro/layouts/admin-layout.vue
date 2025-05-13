@@ -3,7 +3,7 @@
     <slot />
     <div class="w-full h-[60px]"></div>
   </div>
-  <BottomNav :items="adminNavItems" />
+  <BottomNav :items="adminNavItems"/>
 </template>
 
 <script setup lang="ts">
