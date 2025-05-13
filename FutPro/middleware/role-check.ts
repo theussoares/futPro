@@ -3,11 +3,14 @@ export default defineNuxtRouteMiddleware((to, from) => {
     const role = userStore.user?.role;
     const versionStore = useVersionStore();
 
-    const cookie = getCookie("versao");
-    if (cookie == "B") versionStore.setVersion("B");
-    console.log("Versão:", versionStore.getVersion, cookie);
+    
 
-    if(to.path === '/') return;
+    if(to.path === '/') {
+        const cookie = getCookie("versao");
+        if (cookie == "B") versionStore.setVersion("B");
+        console.log("Versão:", versionStore.getVersion, cookie);
+        return;
+    }
 
     if (!role) {
         return navigateTo('/');
